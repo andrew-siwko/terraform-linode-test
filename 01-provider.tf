@@ -9,7 +9,8 @@ terraform {
   backend "s3" {
       bucket                      = "asiwko-terraform-state"
       key                         = "tf/tfstate"  
-      region                      = "us-iad-10"  
+      region                      = "us-east1"
+      # region                      = "us-iad" # gemini recommended east1 for signing
       use_path_style              = true
       skip_region_validation      = true  
       skip_credentials_validation = true
