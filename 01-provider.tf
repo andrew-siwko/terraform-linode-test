@@ -9,13 +9,15 @@ terraform {
   backend "s3" {
       bucket                      = "asiwko-terraform-state"
       key                         = "tf/tfstate"  
-      region                      = "us-east1"
+      region                      = "us-east-1"
       # region                      = "us-iad" # gemini recommended east1 for signing
       use_path_style              = true
       skip_region_validation      = true  
       skip_credentials_validation = true
       skip_requesting_account_id  = true
       skip_s3_checksum            = true
+      skip_metadata_api_check     = true
+      sts_region                  = "us-east-1"      
       endpoints                   = {
                                     s3 = "https://us-iad-10.linodeobjects.com"
                                   }
