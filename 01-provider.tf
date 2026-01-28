@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
       bucket                      = "asiwko-terraform-state"
       key                         = "tf/tfstate"  
-      region                      = "us-iad"  
+      region                      = "us-iad-10"  
       use_path_style              = true
       skip_region_validation      = true  
       skip_credentials_validation = true
