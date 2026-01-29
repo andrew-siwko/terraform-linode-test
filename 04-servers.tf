@@ -13,7 +13,7 @@ resource "linode_instance" "asiwko-vm-01" {
 resource "linode_instance" "asiwko-vm-02" {
 #   image = "linode/almalinux9"
   image = "linode/rocky9"
-  label = "asiwko-vm-01"
+  label = "asiwko-vm-02"
   # iad was full
   # region          = "us-iad"
   region          = "us-southeast"
