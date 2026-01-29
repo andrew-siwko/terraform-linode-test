@@ -5,6 +5,6 @@ resource "linode_instance" "terraform-web" {
   # group = "Terraform"
   region          = "us-iad"
   type            = "g6-nanode-1"
-  authorized_keys = [file("/container_shared/ansible/ansible_rsa.pub")]
-  root_pass       = file("/container_shared/ansible/linode-root-pw.txt")
+  authorized_keys = [trimspace(file("/container_shared/ansible/ansible_rsa.pub"))]
+  root_pass       = trimspace(file("/container_shared/ansible/linode-root-pw.txt"))
 }
