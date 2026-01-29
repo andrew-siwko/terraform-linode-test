@@ -17,7 +17,7 @@ resource "linode_domain_record" "lin01_siwko_org" {
     name = "lin01"
     record_type = "A"
     ttl_sec = 5
-    target = linode_instance.asiwko-vm-01.ipv4
+    target = one(linode_instance.asiwko-vm-01.ipv4)
 }
 
 
