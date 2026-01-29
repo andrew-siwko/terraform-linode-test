@@ -1,5 +1,8 @@
-output "machine_keys" {
+output "machine_keys-01" {
   value = keys(linode_instance.asiwko-vm-01)
+}
+
+output "machine_keys-02" {
   value = keys(linode_instance.asiwko-vm-02)
 }
 
