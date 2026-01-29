@@ -1,4 +1,4 @@
-resource "linode_instance" "terraform-web" {
+resource "linode_instance" "asiwko-vm-01" {
   image = "linode/almalinux9"
   # image = "linode/rocky9"
   label = "asiwko-vm-01"
