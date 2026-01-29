@@ -6,19 +6,34 @@ terraform {
       source  = "linode/linode"
     }
   }
-  backend "s3" {
-      bucket                      = "asiwko-terraform-state"
-      key                         = "tf/tfstate"  
-      region                      = "us-iad-1" 
-      use_path_style              = true
-      skip_region_validation      = true  
-      skip_credentials_validation = true
-      skip_requesting_account_id  = true
-      skip_s3_checksum            = true
-      endpoints                   = {
-                                    s3 = "https://us-iad-1.linodeobjects.com"
-                                  }
+
+backend "s3" {
+  bucket   = "asiwko-terraform-state"
+  key      = "tf/tfstate"
+  region   = "us-iad-1"
+  endpoints = {
+    s3 = "https://us-iad-10.linodeobjects.com"
   }
+
+  use_path_style              = true 
+  skip_credentials_validation = true
+  skip_region_validation      = true
+  skip_requesting_account_id  = true
+  skip_s3_checksum            = true
+}  
+#   backend "s3" {
+#       bucket                      = "asiwko-terraform-state"
+#       key                         = "tf/tfstate"  
+#       region                      = "us-iad-1" 
+#       use_path_style              = true
+#       skip_region_validation      = true  
+#       skip_credentials_validation = true
+#       skip_requesting_account_id  = true
+#       skip_s3_checksum            = true
+#       endpoints                   = {
+#                                     s3 = "https://us-iad-1.linodeobjects.com"
+#                                   }
+#   }
 }
 
 provider "azurerm" {
