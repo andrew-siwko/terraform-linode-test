@@ -12,12 +12,12 @@ resource "linode_domain" "siwko_org" {
 }
 
 # Records for the public IP addresses.
-# resource "linode_domain_record" "gcp01_siwko_org" {
-#     domain_id = linode_domain.siwko_org.id
-#     name = "lin01"
-#     record_type = "A"
-#     ttl_sec = 5
-#     target = ???
-# }
+resource "linode_domain_record" "lin01_siwko_org" {
+    domain_id = linode_domain.siwko_org.id
+    name = "lin01"
+    record_type = "A"
+    ttl_sec = 5
+    target = linode_instance.asiwko-vm-01.ipv4
+}
 
 
