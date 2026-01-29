@@ -21,3 +21,12 @@ resource "linode_domain_record" "lin01_siwko_org" {
 }
 
 
+resource "linode_domain_record" "lin02_siwko_org" {
+    domain_id = linode_domain.siwko_org.id
+    name = "lin01"
+    record_type = "A"
+    ttl_sec = 5
+    target = one(linode_instance.asiwko-vm-02.ipv4)
+}
+
+
