@@ -20,6 +20,15 @@ resource "linode_firewall" "asiwko_firewall" {
   }
 
   inbound {
+    label    = "allow-tomcat-http"
+    action   = "ACCEPT"
+    protocol = "TCP"
+    ports    = "8080"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
+
+  inbound {
     label    = "allow-https"
     action   = "ACCEPT"
     protocol = "TCP"
