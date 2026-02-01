@@ -2,6 +2,13 @@ resource "linode_firewall" "asiwko_firewall" {
   label = "asiwko_firewall"
 
   inbound {
+    label    = "allow-icmp"
+    action   = "ACCEPT"
+    protocol = "ICMP"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
+  inbound {
     label    = "allow-ssh"
     action   = "ACCEPT"
     protocol = "TCP"
