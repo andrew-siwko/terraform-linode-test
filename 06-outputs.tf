@@ -1,11 +1,3 @@
-output "machine_keys-01" {
-  value = keys(linode_instance.asiwko-vm-01)
-}
-
-output "machine_keys-02" {
-  value = keys(linode_instance.asiwko-vm-02)
-}
-
 output "machine_info-01" {
   value = {
     id     = linode_instance.asiwko-vm-01.id
