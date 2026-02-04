@@ -36,6 +36,7 @@ The second Jenkins job imports my DNS zone.  I run it only once after the plan i
   * Fedora Linux (upstream RHEL)
   * Rocky Linux (downstream RHEL)
 * I knew that I wanted to stay downstream of RHEL but ultimatley I couldn't decide and so installed instances of Rocky 9 and Alma 9.
+* I liked being able to just give a key to the other cloud providers.  Linode also asked for a root password.  I see the value but I'm just starting with ansible-vault.
 * It took me 2 days to get my VMs provisioned.
   * Start: 2026-01-28
   * Functional: 2026-01-30
