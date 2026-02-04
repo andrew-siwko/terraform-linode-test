@@ -8,9 +8,9 @@ It all starts with the [Cloud Console](https://cloud.linode.com/).
 ## Multicloud
 I tried to build the same basic structures in each of the cloud environments.  Each one starts with providers (and a backend), lays out the network and security, creates the VM and then registers the public IP in my DNS.  There is some variability which has been interesting to study.  The Terraform state file is stored on each provider.
 * Step 1 - [AWS](https://github.com/andrew-siwko/terraform-aws-test)
-* Step 2 - [Azure](https://github.com/andrew-siwko/terraform-azure-test) (you are here)
+* Step 2 - [Azure](https://github.com/andrew-siwko/terraform-azure-test)
 * Step 3 - [GCP](https://github.com/andrew-siwko/terraform-gcp-test)
-* Step 4 - [Linode](https://github.com/andrew-siwko/terraform-linode-test)
+* Step 4 - [Linode](https://github.com/andrew-siwko/terraform-linode-test) (you are here)
 * Step 5 - [IBM](https://github.com/andrew-siwko/terraform-ibm-test)
 
 ## Build Environment
