@@ -57,5 +57,5 @@ resource "linode_firewall" "asiwko_firewall" {
 
   outbound_policy = "ACCEPT"
 
-  linodes = [linode_instance.asiwko-vm-01.id, linode_instance.asiwko-vm-02.id]
+  linodes = [linode_instance.asiwko-vm-01.id]
 }
