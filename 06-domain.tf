@@ -1,6 +1,6 @@
 # ONLY for the siwko.org domain on Linode
 # use this once to get the zone into the state file
-# terraform import linode_domain.domain_name 1228113
+# terraform import linode_domain.domain_name 3417841
 
 # This will update the dns records in my siwko.org domain for the new instances.
 resource "linode_domain" "dns_zone" {
