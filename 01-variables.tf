@@ -5,7 +5,7 @@ variable "LINODE_API_KEY" {
 }
 
 variable "instance_region" {
-  description = "The region to create the Linode instance"
+  description = "The region to create the instance"
   type        = string
   default     = "us-southeast"
 }

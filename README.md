@@ -46,3 +46,4 @@ The second Jenkins job imports my DNS zone.  I run it only once after the plan i
     * Broken CLI (1 support ticket - quick fix)
     * Finding the right datacenter for my instance (capacity)
     * No RHEL images
+    * setting authorized keys required trimspace() around the file content.
