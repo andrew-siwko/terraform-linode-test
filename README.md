@@ -46,7 +46,8 @@ fi
   * Rocky Linux (downstream RHEL)
 * I knew that I wanted to stay downstream of RHEL but ultimatley I couldn't decide and so installed instances of Rocky 9 and Alma 9.
 * I liked being able to just give a key to the other cloud providers.  Linode also asked for a root password.  I see the value but I'm just starting with ansible-vault.
-* It took me 2 days to get my VMs provisioned.
+* It took me 2 days to get my VM provisioned.
+* Project stats:
   * Start: 2026-01-28
   * Functional: 2026-01-30
   * Number of Jenkins builds to success: 34
