@@ -1,6 +1,6 @@
 # Andrew's Multicloud Terraform Experiment
 ## Overview
-This experiment uses Terraform to create a single virtual machine on Linode's cloud.  It is part of a series of experiments begun in early 2026.  This is the one project that was not free for me.  I have been a Linode Customer since 2004 and so used my personal account.  The good new is that the nodes created cost no more than $5 a month which is affordable.  I have structured the Terraform files with sequence numbers to show the logical flow of resource creation.  Roughly the sequence is:
+This experiment uses Terraform to create a single virtual machine on [Linode's cloud](https://cloud.linode.com/).  It is part of a series of experiments begun in early 2026.  This is the one project that was not free for me.  I have been a Linode Customer since 2004 and so used my personal account.  The good new is that the nodes created cost no more than $5 a month which is affordable.  I have structured the Terraform files with sequence numbers to show the logical flow of resource creation.  Roughly the sequence is:
 * 00-create-resources.bash
   * This file contains shell commands and notes used to manipulate the cloud environment from the CLI.  My approach has been to make things work and then Terraform them.  Thus you may see commands to discover the instance types which I used to hard code server creation.  These were later replaced with lookups inside terraform.  the commands and notes may still be useful.
 * 01-variables.auto.tfvars, 01-variables.tf
@@ -19,8 +19,7 @@ This experiment uses Terraform to create a single virtual machine on Linode's cl
   * This file contains outputs from Terraform state at the end of the process.  During development, I leaned on this heavily to discover internal states and key names.  Once finished, I leave the public IP of the instance in the output for validation.
 
 Except for Linode, with whom I have an existing paid relationship, all other instances were provisioned using a free trial.
-Once Terraform provisioning is complete, I use Ansible to configure and install Tomcat, set an apache proxy and install a sample application.  [More on that later...](https://github.com/andrew-siwko/ansible-multi-cloud-tomcat-hello)<br/>
-It all starts with the [Cloud Console](https://cloud.linode.com/).
+Once Terraform provisioning is complete, I use Ansible to configure and install Tomcat, set an apache proxy and install a sample application.  [More on that later...](https://github.com/andrew-siwko/ansible-multi-cloud-tomcat-hello)
 
 ## Multicloud
 I tried to build the same basic structures in each of the cloud environments.  Each one starts with providers (and a backend), lays out the network and security, creates the VM and then registers the public IP in my DNS.  There is some variability which has been interesting to study.  The Terraform state file is stored on each provider.
@@ -33,24 +32,18 @@ I tried to build the same basic structures in each of the cloud environments.  E
 * Step 7 - [Digital Ocean](https://github.com/andrew-siwko/terraform-digital-ocean-test)
 
 ## Build Environment
-I stood up my own Jenkins server and built a freestyle job to support the Terraform infrastructure builds.
+I stood up my own Jenkins server and built a freestyle job to support the Terraform infrastructure builds.  Jenkins polls this GitHubrepo and when changes are detected, starts a job whic performs the following steps:
 * terraform init
-* _some bash to import the domain (see below)_
+* terraform state list | grep -q "linode_domain.dns_zone"
+  * _If the zone is not found, import it_
+  * Terraform import linode_domain.dns_zone 3417841
 * terraform plan
 * terraform apply -auto-approve
 * terraform output (This is piped to mail so I get an e-mail with the outputs.)
 
-Yes, I know plan and apply should be separate and intentional.  In this case I found defects in plan which halted the job before apply.  That was useful.  I also commented out apply until plan was pretty close to working.<br/>
-The Jenkins job contains environment variables with authentication information for the cloud environment and [Linode](https://www.linode.com/) (my registrar).<br/>
-I did have a second job to import the domain zone but switched to a conditional in a script.  The code checks to see whether my zone record has been imported.  If not, the zone creation will fail.
-```bash
-if ! terraform state list | grep -q "linode_domain.dns_zone"; then
-  echo "Resource not in state. Importing..."
-  terraform import linode_domain.dns_zone 3417841
-else
-  echo "Domain already managed. Skipping import."
-fi
-```
+The Jenkins job contains environment variables with authentication information for the cloud environment and [Linode](https://www.linode.com/) my DNS registrar.
+The zone resource has to be in terraform to attach the A record for the newly created VM.  Note that the zone resource is marked as "prevent_destroy" in order to stop Terraform from destroying the entire domain zone.
+
 
 ## Observations
 * This was my fourth cloud provisioning project.  I chose Linode because I've used the company to host Linux virtual machines (LINux NOdes) for many years.
