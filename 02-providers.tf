@@ -29,9 +29,9 @@ terraform {
 
   # }
 }
-provider "azurerm" {
-  features {}
-}
+# provider "azurerm" {
+#   features {}
+# }
 
 provider "linode" {
   token = var.LINODE_API_KEY
