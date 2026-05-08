@@ -1,0 +1,7 @@
+.terraform.lock.hcl
+.terraform/terraform.tfstate
+.terraform/providers/registry.terraform.io/linode/linode/3.11.0/linux_amd64/LICENSE
+.terraform/providers/registry.terraform.io/linode/linode/3.11.0/linux_amd64/terraform-provider-linode_v3.11.0
+.terraform/providers/registry.terraform.io/linode/linode/3.11.0/linux_amd64/README.md
+.terraform/providers/registry.terraform.io/linode/linode/3.11.0/linux_amd64/CHANGELOG.md
+schema.txt
